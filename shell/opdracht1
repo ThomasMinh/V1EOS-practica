@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+   mkdir -p $1/afbeeldingen
+   for i in $(find $1 -type f \( -iname '*.jpg' -o -iname '*.png' \) ) ; do
+         exec mv $i $1/afbeeldingen
+   done 
