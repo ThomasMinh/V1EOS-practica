@@ -1,0 +1,25 @@
+
+#!/usr/bin/env bash
+rm -f log
+
+for file in $(ls $1) ; do
+        if $2 $file > /dev/null 2> /dev/null
+        then 
+                echo "$2 $file Gelukt!" >> log
+        else
+                echo "$2 $file Mislukt!" >> log
+        fi
+done 
+
+
+
+
+
+
+
+
+
+
+
+
+
