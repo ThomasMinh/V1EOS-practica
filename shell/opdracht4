@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+touch passwordfile
+read -p "Enter username" username
+if [ "$username" == "" ] ; then
+        whoami
+else
+        echo $username
+
+read -s -p "Enter password" pw
+echo -e '\n'
+
+if [ ${#pw} -lt 8 ] ; then
+        echo "Wachtwoord moet 8 characters lang zijn"
+        read -s -p "Enter password" pw
+else
+        read -s -p "Enter password" pw2
+fi
+
+while [ "$pw" != "$pw2" ] ; do
+        echo "Wachtwoord is niet hetzelfde"
+        read -s -p "Enter password" pw2
+done
+
+for file in $1
+do
+echo  "$username" >> $file
+echo   "$pw2"|md5sum >> $file
+echo >> $file
+done
+fi
